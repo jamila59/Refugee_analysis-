@@ -1,0 +1,14 @@
+---
+title: "Asylum Reports"
+output: html_document
+---
+
+Click on a country name to view its report:
+
+```{r}
+all_data <- read.csv("data/population.csv", skip = 14)
+
+# Get a list of iso3 codes
+all_iso3s <- unique(data$Country.of.asylum..ISO.)
+```
+

@@ -1,0 +1,24 @@
+---
+title: "Asylum Seeker Reports"
+output: html_document
+---
+
+Click below to see a country's report:
+```{r include = F}
+library(knitr)
+library(tidyverse)
+all_data <- read.csv("data/population.csv", skip = 14)
+
+data <- all_data %>% 
+  filter(Year == 2020) %>% 
+  select(Country.of.asylum, Country.of.asylum..ISO.) %>% 
+  distinct() %>% 
+  mutate(Country = paste0("[", Country.of.asylum, "]", "(", Country.of.asylum..ISO., ".html)")) %>%
+  select(Country)
+
+```
+
+```{r echo = F}
+kable(data)
+```
+
